@@ -4,7 +4,7 @@ import {
   remove,
   edit,
   getAll,
-} from '../../controllers/producto/productoController.js';
+} from '../../controllers/producto/controller.js';
 
 const rutasProducto = express.Router();
 
