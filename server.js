@@ -1,7 +1,3 @@
-// hacer el import de express tradicional
-// const express = require('express');
-
-// hacer el nuevo import
 import express from 'express';
 import dotenv from 'dotenv';
 import Cors from 'cors';
@@ -16,6 +12,7 @@ import jwks  from 'jwks-rsa';
 dotenv.config({ path: './.env' });
 const app = express();
 
+//validacion de token
 var jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
       cache: true,
@@ -28,10 +25,9 @@ issuer: 'https://misiontic-apolo2-appventas.us.auth0.com/',
 algorithms: ['RS256']
 });
 
-
 app.use(express.json());
 app.use(Cors());
-app.use(jwtCheck);
+app.use(jwtCheck);//Middle para validar el token, genera error 401 no autorizado
 app.use(morgan('tiny'));
 app.use(rutasProducto);
 app.use(rutasUsuario);

@@ -21,7 +21,7 @@ const connectServer = (callback) => {
       return 'error';
     }
     baseDeDatos = db.db('admin-ventas-app');
-    console.log('baseDeDatos exitosa');
+    console.log('Conectado a la BD exitosamente!');
     return callback();
   });
 };
