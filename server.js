@@ -12,6 +12,8 @@ import jwks  from 'jwks-rsa';
 dotenv.config({ path: './.env' });
 const app = express();
 
+const port = process.env.PORT || 5000
+
 //validacion de token
 var jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -34,8 +36,8 @@ app.use(rutasUsuario);
 // app.use(rutasVenta);
 
 const main = () => {
-  return app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port: ${process.env.PORT}`);
+  return app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
   });
 };
 
