@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import Cors from 'cors';
-import morgan from 'morgan';
 import { connectServer } from './db/db.js';
 import rutasProducto from './views/producto/routes.js';
 import rutasUsuario from './views/usuarios/routes.js';
