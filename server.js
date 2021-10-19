@@ -27,7 +27,7 @@ algorithms: ['RS256']
 
 app.use(express.json());
 app.use(Cors());
-app.use(jwtCheck);//Middle para validar el token, genera error 401 no autorizado
+app.use(jwtCheck);//Middle para validar el token, genera error 401 no autorizado si el token no es valido.
 app.use(morgan('tiny'));
 app.use(rutasProducto);
 app.use(rutasUsuario);
