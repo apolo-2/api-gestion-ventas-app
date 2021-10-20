@@ -5,6 +5,7 @@ import { connectServer } from './db/db.js';
 import rutasProducto from './views/producto/routes.js';
 import rutasUsuario from './views/usuarios/routes.js';
 // import rutasVenta from './views/sale/routes.js';
+import autorizacionEstadoUsuario from './middleware/autorizacionEstadoUsuario.js';
 import jwt  from 'express-jwt';
 import jwks  from 'jwks-rsa';
 
@@ -29,6 +30,7 @@ algorithms: ['RS256']
 app.use(express.json());
 app.use(Cors());
 app.use(jwtCheck);//Middle para validar el token, genera error 401 no autorizado si el token no es valido.
+app.use(autorizacionEstadoUsuario); //Para la validacion del estado del usuario.
 app.use(rutasProducto);
 app.use(rutasUsuario);
 // app.use(rutasVenta);

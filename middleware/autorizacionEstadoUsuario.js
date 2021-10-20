@@ -10,17 +10,17 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
 
   // paso 2: consultar el usuario en la BD
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('usuario').findOne({ email: user.email }, async (err, response) => {
+  await baseDeDatos.collection('usuarios').findOne({ correo: user.email }, async (err, response) => {
     if (response) {
       console.log(response);
       // paso 3: verificar el estado del usuario.
-      if (response.estado === 'rechazado') {
+      if (response.estado === 'No autorizado') {
         // paso 4: si el usuario es rechazado, devolver un error de autenticacion.
         res.sendStatus(401);
         res.end();
       } else {
-        console.log('habilitado');
-        // paso 5: si el usuario está pendiente o habilitado, ejecutar next()
+        console.log('Es un usuario autorizado!');
+        // paso 5: si el usuario está pendiente o Autorizado, ejecutar next()
         next();
       }
     }

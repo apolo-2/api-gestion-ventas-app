@@ -53,7 +53,7 @@ const consultarOCrearUsuario = async (req, callback) => {
       const finalUser = {
         nombre: user.name,
         correo: user.email,
-        rol :   '', // 'sin rol'; //Segun historias de usuario
+        rol :   'sin rol', // 'sin rol'; //Segun historias de usuario
         estado: 'Pendiente', //Segun historias de usuario
       }
 
