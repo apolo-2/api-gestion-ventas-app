@@ -9,6 +9,7 @@ const todoUsuarios = async (callback) => {
 };
 
 const crearUsuario = async (datosUsuario, callback) => {
+  
   if (
     Object.keys(datosUsuario).includes('correo') &&
     Object.keys(datosUsuario).includes('nombre') &&
@@ -45,9 +46,19 @@ const consultarOCrearUsuario = async (req, callback) => {
       // 7.2. si el usuario no esta en la bd, lo crea y devuelve la info
       user.auth0ID = user._id;
       delete user._id; //Eliminamos el id que entrega Auth0, no lo necesitamos.
-      user.rol = 'sin rol'; //Segun historias de usuario
-      user.estado = 'pendiente'; //Segun historias de usuario
-      await crearUsuario(user, (err, respuesta) => callback(err, user));
+      // user.rol = 'sin rol'; //Segun historias de usuario
+      // user.estado = 'pendiente'; //Segun historias de usuario
+
+      //Ajuste de acuerdo a nuestra coleccion usuarios
+      const finalUser = {
+        nombre: user.name,
+        correo: user.email,
+        rol :   '', // 'sin rol'; //Segun historias de usuario
+        estado: 'Pendiente', //Segun historias de usuario
+      }
+
+      console.log('Final user to save:',finalUser)
+      await crearUsuario(finalUser, (err, respuesta) => callback(err, user));
     }
   });
 };
