@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 const autorizacionEstadoUsuario = async (req, res, next) => {
   // paso 1: obtener el usuario desde el token
   const token = req.headers.authorization.split('Bearer ')[1];
-  const user = jwt_decode(token)['http://localhost/userData'];
+  const user = jwt_decode(token)['http://localhost/userData'];//localhost es de acuerdo a como se haya creado la fn en Auth0 (rules)
   console.log(user);
 
   // paso 2: consultar el usuario en la BD
