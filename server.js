@@ -1,14 +1,10 @@
-// hacer el import de express tradicional
-// const express = require('express');
-
-// hacer el nuevo import
 import express from "express";
 import dotenv from "dotenv";
 import Cors from "cors";
 import { connectServer } from "./db/db.js";
 import rutasProducto from "./views/producto/routes.js";
 import rutasUsuario from "./views/usuarios/routes.js";
-// import rutasVenta from './views/sale/routes.js';
+import rutasVenta from "./views/ventas/routes.js";
 
 dotenv.config({ path: "./.env" });
 
@@ -18,7 +14,9 @@ app.use(express.json());
 app.use(Cors());
 app.use(rutasProducto);
 app.use(rutasUsuario);
-app.use(function (req, res, next) {
+app.use(rutasVenta);
+let respuesta;
+app.use(function (_req, res, next) {
   respuesta = {
     error: true,
     codigo: 404,
