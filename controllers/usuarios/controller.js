@@ -48,15 +48,15 @@ const consultarOCrearUsuario = async (req, callback) => {
         // 7.2. si el usuario no esta en la bd, lo crea y devuelve la info
         user.auth0ID = user._id;
         delete user._id; //Eliminamos el id que entrega Auth0, no lo necesitamos.
-        // user.rol = 'sin rol'; //Segun historias de usuario
+        // user.rol = 'sin-rol'; //Segun historias de usuario
         // user.estado = 'pendiente'; //Segun historias de usuario
 
         //Ajuste de acuerdo a nuestra coleccion usuarios
         const finalUser = {
           nombre: user.name,
           correo: user.email,
-          rol: "sin rol", // 'sin rol'; //Segun historias de usuario
-          estado: "Pendiente", //Segun historias de usuario
+          rol: "sin-rol", // 'sin-rol'; //Segun historias de usuario
+          estado: "pendiente", //Segun historias de usuario
         };
 
         console.log("Final user to save:", finalUser);
